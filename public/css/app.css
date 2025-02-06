@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+div.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+div.container > header {
+    background-color: rgb(27, 27, 182);
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+div.container > nav {
+    background-color: rgb(255, 255, 255);
+}
+div.container > nav li {
+    display: inline-block;
+    line-height: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+}
+div.container > nav a:link,
+div.container > nav a:active,
+div.container > nav a:visited {
+    text-decoration: none;
+    color: rgb(14, 14, 88);
+    padding: 1rem;
+}
+div.container > nav li:hover,
+div.container > nav a:hover {
+    background-color: rgb(27, 27, 182);
+    color: white;
+}
+div.content{
+    min-height: 400px;
+    background-color: rgb(255, 255, 255);
+    padding: 2rem;
+}
+div.content h2 {
+    font-family: Arial;
+    color: rgb(1, 1, 78);
+    margin-bottom: 3rem;
+    text-align: center;
+}
+div.content p{
+    line-height: 1.5rem;
+    
+}
+div.container > footer{
+    background-color: rgb(255, 255, 255);
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+table.data-table{
+    border-spacing: 0;
+    margin:auto;
+}
+table.data-table > thead{
+    background-color: darkblue;
+    color: white;
+   
+}
+table.data-table td, th {
+    border: solid thin black;
+    padding: 5px;
+    
+}
+table.data-table tfoot{
+    background-color: rgb(255, 255, 255);
+    margin:auto;
+}
+table.data-table > tbody > tr:hover{
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+   
+}
+form.form label {
+   
+    padding-bottom: 0.3rem;
+   
+}
+form.form input[type=text], form.form input[type=number] {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+form.form input[type=submit], form.form input[type=reset], button{
+    padding: 0.5rem;
+    cursor: pointer;
+}
