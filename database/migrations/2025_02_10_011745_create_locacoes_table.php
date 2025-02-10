@@ -13,15 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-
-        Schema::create('vehicles', function (Blueprint $table) {
+        Schema::create('locacoes', function (Blueprint $table) {
             $table->id();
-            $table->string("name", 50);
-            $table->integer("year");
-            $table->string("color", 30);
+            $table->foreignId('carro_id')->constrained('carros')->onDelete('cascade');
+            $table->foreignId('cliente_id')->constrained('clientes')->onDelete('cascade');
+            $table->date('data_inicio');
+            $table->date('data_fim');
+            $table->decimal('valor_pago', 10, 2); 
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehicles');
+        Schema::dropIfExists('locacoes');
     }
 };
