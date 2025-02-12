@@ -2,11 +2,11 @@
 
 @section('content')
     <h1>Lista de Carros</h1>
-    <a href="{{ route('carros.create') }}">Adicionar Carro</a>
+    <a href="{{ route('carros.create') }}" class="btn btn-primary mb-3">Adicionar Carro</a>
     @if(session('msg'))
-        <div>{{ session('msg') }}</div>
+        <div class="alert alert-success">{{ session('msg') }}</div>
     @endif
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Modelo</th>
@@ -24,13 +24,13 @@
                     <td>{{ $carro->ano }}</td>
                     <td>{{ $carro->preco_diaria }}</td>
                     <td>
-                        <a href="{{ route('carros.edit', $carro->id) }}">Editar</a>
+                        <a href="{{ route('carros.edit', $carro->id) }}" class="btn btn-sm btn-primary">Editar</a>
                         <form action="{{ route('carros.destroy', $carro->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">Excluir</button>
+                            <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
                         </form>
-                        <a href="{{ route('carros.show', $carro->id) }}">Ver</a>
+                        <a href="{{ route('carros.show', $carro->id) }}" class="btn btn-sm btn-info">Ver</a>
                     </td>
                 </tr>
             @endforeach
