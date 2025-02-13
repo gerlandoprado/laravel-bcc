@@ -7,7 +7,8 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CustoController;
 
 Route::get('/', function () {
-    return view('welcome');
+    $carros = \App\Models\Carro::all();
+    return view('welcome', compact('carros'));
 });
 
 Route::resource('carros', CarroController::class);

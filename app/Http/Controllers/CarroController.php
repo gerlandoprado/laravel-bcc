@@ -35,6 +35,14 @@ class CarroController extends Controller
         $carro->ano = $request->input('ano');
         $carro->preco_diaria = $request->input('preco_diaria');
         $carro->opcionais = $request->input('opcionais');
+
+        if ($request->hasFile('imagem')) {
+            $imagem = $request->file('imagem');
+            $nomeImagem = time() . '_' . rand(1000, 9999) . '.' . $imagem->getClientOriginalExtension();
+            $imagem->move(public_path('images/carros'), $nomeImagem);
+            $carro->imagem = 'images/carros/' . $nomeImagem;
+        }
+
         $carro->save();
 
         $carros = Carro::all();

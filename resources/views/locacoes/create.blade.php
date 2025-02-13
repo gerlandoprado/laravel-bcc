@@ -36,7 +36,7 @@
         </div>
 
         <div class="form-group">
-            <label for="valor_pago">Valor Pago:</label>
+            <label for="valor_pago">Desconto:</label>
             <input type="number" name="valor_pago" class="form-control" step="0.01" required>
         </div>
 
