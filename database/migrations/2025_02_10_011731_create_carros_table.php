@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('ano');
             $table->decimal('preco_diaria', 8, 2);
             $table->text('opcionais')->nullable();
+            $table->string('imagem')->nullable(); // Adiciona a coluna imagem
             $table->timestamps();
         });
     }

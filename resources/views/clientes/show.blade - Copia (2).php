@@ -48,5 +48,5 @@
         </table>
     @endif
 
-    <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Voltar para Clientes</a>
+    <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Voltar</a>
 @endsection

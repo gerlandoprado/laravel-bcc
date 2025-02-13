@@ -84,8 +84,11 @@
                 <img src="{{ asset('storage/' . $carro->imagem) }}" alt="Imagem do Carro">
                 <h3>{{ $carro->modelo }}</h3>
                 <p><strong>Marca:</strong> {{ $carro->marca }}</p>
+                <p><strong>Ano:</strong> {{ $carro->ano }}</p>
                 <p><strong>Preço Diário:</strong> R$ {{ number_format($carro->preco_diaria, 2, ',', '.') }}</p>
-                <a href="{{ route('locacoes.create', ['carro_id' => $carro->id]) }}" class="btn btn-success">Alugar</a>
+                @if($carro->opcionais)
+                    <p><strong>Opcionais:</strong> {{ $carro->opcionais }}</p>
+                @endif
             </div>
         @endforeach
     </div>

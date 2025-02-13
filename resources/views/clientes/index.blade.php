@@ -2,21 +2,23 @@
 
 @section('content')
     <h1>Lista de Clientes</h1>
-    <a href="{{ route('clientes.create') }}" class="btn btn-primary mb-3">Adicionar Cliente</a>
+    
     @if(session('msg'))
         <div class="alert alert-success">{{ session('msg') }}</div>
     @endif
+
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>cpf</th>
+                <th>CPF</th>
                 <th>Email</th>
                 <th>Telefone</th>
                 <th>Ações</th>
             </tr>
         </thead>
-        <tbody @foreach($clientes as $cliente)
+        <tbody>
+            @foreach($clientes as $cliente)
                 <tr>
                     <td>{{ $cliente->nome }}</td>
                     <td>{{ $cliente->cpf }}</td>
@@ -35,4 +37,6 @@
             @endforeach
         </tbody>
     </table>
+
+    <a href="{{ route('clientes.create') }}" class="btn btn-primary mb-3">Adicionar Cliente</a>
 @endsection
