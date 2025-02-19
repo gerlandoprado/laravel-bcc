@@ -1,41 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.welcome')
 
 @section('content')
-<div class="container-fluid p-0 mb-4">
-    <img src="{{ asset('images/banner.png') }}" alt="Banner" class="img-fluid w-100" style="margin-top: -3rem;">
-</div>
-
-<div class="container mt-4">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        @foreach($carros as $carro)
-        <div class="col">
-            <div class="card h-100">
-                @if($carro->imagem)
-                    <img src="{{ asset('/' . $carro->imagem) }}" class="card-img-top" alt="{{ $carro->modelo }}" style="height: 200px; object-fit: cover;">
-                @else
-                    <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                        <i class="fas fa-car fa-3x"></i>
-                    </div>
-                @endif
-                <div class="card-body">
-                    <h5 class="card-title">{{ $carro->modelo }}</h5>
-                    <p class="card-text">
-                        <strong>Marca:</strong> {{ $carro->marca }}<br>
-                        <strong>Ano:</strong> {{ $carro->ano }}<br>
-                        <strong>Preço Diária:</strong> R$ {{ number_format($carro->preco_diaria, 2, ',', '.') }}
-                    </p>
-                    <a href="{{ route('carros.show', $carro->id) }}" class="btn btn-success w-100">Alugar</a>
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
-</div>
 <style>
+    body {
+        background-color: #FF7700;
+    }
     .welcome-container {
         text-align: center;
         padding: 50px 20px;
-        color: #FF7700;
+        color: white;
     }
     .brand-name {
         font-size: 4rem;
@@ -49,8 +22,8 @@
         gap: 20px;
     }
     .nav-button {
-        background-color: #FF7700;
-        border: 2px solid #FF7700;
+        background-color: transparent;
+        border: 2px solid white;
         color: white;
         padding: 15px 30px;
         font-size: 1.2rem;
@@ -111,8 +84,11 @@
                 <img src="{{ asset('storage/' . $carro->imagem) }}" alt="Imagem do Carro">
                 <h3>{{ $carro->modelo }}</h3>
                 <p><strong>Marca:</strong> {{ $carro->marca }}</p>
+                <p><strong>Ano:</strong> {{ $carro->ano }}</p>
                 <p><strong>Preço Diário:</strong> R$ {{ number_format($carro->preco_diaria, 2, ',', '.') }}</p>
-                <a href="{{ route('locacoes.create', ['carro_id' => $carro->id]) }}" class="btn btn-success">Alugar</a>
+                @if($carro->opcionais)
+                    <p><strong>Opcionais:</strong> {{ $carro->opcionais }}</p>
+                @endif
             </div>
         @endforeach
     </div>

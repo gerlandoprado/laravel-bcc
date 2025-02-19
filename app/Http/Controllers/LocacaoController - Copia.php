@@ -9,25 +9,28 @@ use App\Models\Cliente;
 
 class LocacaoController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $locacoes = Locacao::with(['carro', 'cliente'])->get();
         return view('locacoes.index')->with('locacoes', $locacoes);
     }
 
-    public function create(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
         $carros = Carro::all();
         $clientes = Cliente::all();
-        $carroSelecionado = null;
-
-        if ($request->has('carro_id')) {
-            $carroSelecionado = Carro::find($request->carro_id);
-        }
-
-        return view('locacoes.create', compact('carros', 'clientes', 'carroSelecionado'));
+        return view('locacoes.create', compact('carros', 'clientes'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -49,6 +52,9 @@ class LocacaoController extends Controller
         return redirect()->route('locacoes.index')->with('msg', 'Locação cadastrada com sucesso!');
     }
 
+    /**
+     * Display the specified resource.
+     */
     public function show($id)
     {
         $locacao = Locacao::with(['carro', 'cliente'])->find($id);
@@ -59,6 +65,9 @@ class LocacaoController extends Controller
         }
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit($id)
     {
         $locacao = Locacao::find($id);
@@ -71,6 +80,9 @@ class LocacaoController extends Controller
         }
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -96,6 +108,9 @@ class LocacaoController extends Controller
         }
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy($id)
     {
         $locacao = Locacao::find($id);

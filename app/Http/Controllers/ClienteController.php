@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\Locacao;
 
 class ClienteController extends Controller
 {
@@ -48,8 +49,12 @@ class ClienteController extends Controller
     public function show($id)
     {
         $cliente = Cliente::find($id);
+        $clientes = Cliente::all(); 
+
         if ($cliente) {
-            return view('clientes.show')->with('cliente', $cliente);
+            // Busca as locações do cliente
+            $locacoes = Locacao::where('cliente_id', $cliente->id)->with('carro')->get();
+            return view('clientes.show', compact('cliente', 'locacoes', 'clientes'));
         } else {
             return view('clientes.show')->with('msg', 'Cliente não encontrado!');
         }
