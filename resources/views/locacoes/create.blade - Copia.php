@@ -10,10 +10,7 @@
             <select name="carro_id" id="carro_id" class="form-control" required>
                 <option value="">Selecione um carro</option>
                 @foreach($carros as $carro)
-                    <option value="{{ $carro->id }}" data-preco="{{ $carro->preco_diaria }}" 
-                        {{ isset($carroSelecionado) && $carroSelecionado->id == $carro->id ? 'selected' : '' }}>
-                        {{ $carro->modelo }}
-                    </option>
+                    <option value="{{ $carro->id }}" data-preco="{{ $carro->preco_diaria }}">{{ $carro->modelo }}</option>
                 @endforeach
             </select>
         </div>
@@ -39,8 +36,8 @@
         </div>
 
         <div class="form-group">
-            <label for="valor_pago">Desconto:</label>
-            <input type="number" name="valor_pago" class="form-control" step="0.01" required>
+            <label for="valor_pago">Valor Pago:</label>
+            <input type="number" name="valor_pago" id="valor_pago" class="form-control" step="0.01" readonly>
         </div>
 
         <button type="submit" class="btn btn-success">Cadastrar</button>
@@ -59,13 +56,13 @@
 
                 const inicio = new Date(dataInicio.value);
                 const fim = new Date(dataFim.value);
-                const dias = (fim - inicio) / (1000 * 60 * 60 * 24);
+                const dias = (fim - inicio) / (1000 * 60 * 60 * 24); // Calcula a diferença em dias
 
                 if (dias > 0) {
                     const total = precoDiaria * dias;
-                    valorPago.value = total.toFixed(2);
+                    valorPago.value = total.toFixed(2); // Atualiza o valor total
                 } else {
-                    valorPago.value = '';
+                    valorPago.value = ''; // Limpa o valor se as datas não forem válidas
                 }
             }
 
