@@ -2,6 +2,15 @@
 
 @section('content')
     <h1>Cadastrar Locação</h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="{{ route('locacoes.store') }}" method="POST">
         @csrf
         
@@ -39,8 +48,8 @@
         </div>
 
         <div class="form-group">
-            <label for="valor_pago">Desconto:</label>
-            <input type="number" name="valor_pago" class="form-control" step="0.01" required>
+            <label for="valor_pago">Valor Total:</label>
+            <input type="number" name="valor_pago" id="valor_pago" class="form-control" step="0.01" required>
         </div>
 
         <button type="submit" class="btn btn-success">Cadastrar</button>

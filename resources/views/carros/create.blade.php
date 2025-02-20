@@ -41,9 +41,6 @@
             <textarea name="opcionais" class="form-control"></textarea>
         </div>
         
-        <label for="imagem">Imagem do Veículo:</label>
-        <input type="file" name="imagem" accept="image/*">
-        
         <div class="form-group">
             <label for="imagem">Imagem:</label> <!-- Novo campo para imagem -->
             <input type="file" name="imagem" class="form-control" accept="image/*"> <!-- Campo para upload de imagem -->

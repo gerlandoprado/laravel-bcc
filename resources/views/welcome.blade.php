@@ -88,33 +88,4 @@
     }
 </style>
 
-<div class="welcome-container">
-    <h1 class="brand-name">Carluguel</h1>
-    <p style="font-size: 1.5rem; margin-bottom: 30px;">Bem-vindo, selecione uma das opções:</p>
-    <div class="nav-buttons">
-        <a href="/carros" class="nav-button">Carros</a>
-        <a href="/locacoes" class="nav-button">Locações</a>
-        <a href="/clientes" class="nav-button">Clientes</a>
-        <a href="/custos" class="nav-button">Custos</a>
-    </div>
-
-    <div class="search-container">
-        <form action="{{ route('welcome') }}" method="GET">
-            <input type="text" name="search" placeholder="Pesquisar carro..." class="form-control" style="width: 300px; margin: 0 auto;">
-            <button type="submit" class="btn btn-primary">Pesquisar</button>
-        </form>
-    </div>
-
-    <div class="car-list">
-        @foreach($carros as $carro)
-            <div class="car-card">
-                <img src="{{ asset('storage/' . $carro->imagem) }}" alt="Imagem do Carro">
-                <h3>{{ $carro->modelo }}</h3>
-                <p><strong>Marca:</strong> {{ $carro->marca }}</p>
-                <p><strong>Preço Diário:</strong> R$ {{ number_format($carro->preco_diaria, 2, ',', '.') }}</p>
-                <a href="{{ route('locacoes.create', ['carro_id' => $carro->id]) }}" class="btn btn-success">Alugar</a>
-            </div>
-        @endforeach
-    </div>
-</div>
 @endsection

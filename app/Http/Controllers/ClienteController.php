@@ -83,9 +83,10 @@ class ClienteController extends Controller
         $cliente = Cliente::find($id);
         if ($cliente) {
             $cliente->nome = $request->input('nome');
-            $cliente->documento = $request->input('documento');
+            $cliente->cpf = $request->input('cpf');
             $cliente->email = $request->input('email');
             $cliente->telefone = $request->input('telefone');
+            $cliente->endereco = $request->input('endereco');
             $cliente->save();
 
             $clientes = Cliente::all();

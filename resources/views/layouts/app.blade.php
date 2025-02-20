@@ -67,10 +67,13 @@
                 </a>
                 <div class="nav-container flex-grow-1 mx-4">
                     <div class="search-box">
-                        <input type="text" class="form-control" placeholder="Pesquisar...">
-                        <button type="button" class="search-button">
-                            <i class="fas fa-search"></i>
-                        </button>
+
+                        <form action="{{ route('welcome') }}" method="GET">
+                            <input type="text" name="search" placeholder="Pesquisar carro..." class="form-control">
+                            <button type="submit" class="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                         <span class="navbar-toggler-icon"></span>
