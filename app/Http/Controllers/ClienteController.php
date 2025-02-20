@@ -8,26 +8,19 @@ use App\Models\Locacao;
 
 class ClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $clientes = Cliente::all();
         return view('clientes.index')->with('clientes', $clientes);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('clientes.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $cliente = new Cliente();
@@ -43,9 +36,7 @@ class ClienteController extends Controller
             ->with('msg', 'Cliente cadastrado com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show($id)
     {
         $cliente = Cliente::find($id);
@@ -60,9 +51,7 @@ class ClienteController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit($id)
     {
         $cliente = Cliente::find($id);
@@ -75,9 +64,7 @@ class ClienteController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, $id)
     {
         $cliente = Cliente::find($id);
@@ -97,9 +84,7 @@ class ClienteController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy($id)
     {
         $cliente = Cliente::find($id);

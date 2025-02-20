@@ -59,6 +59,24 @@
             align-items: center;
             width: 100%;
         }
+        @media (max-width: 991px) {
+            .search-box {
+                margin: 15px 0;
+            }
+            .mobile-login {
+                margin: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
+            .desktop-login {
+                display: none;
+            }
+        }
+        @media (min-width: 992px) {
+            .mobile-login {
+                display: none;
+            }
+        }
     </style>
         <div class="container">
             <div class="d-flex justify-content-between align-items-center w-100">
@@ -66,8 +84,10 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Carluguel" height="70">
                 </a>
                 <div class="nav-container flex-grow-1 mx-4">
-                    <div class="search-box">
-
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="search-box d-none d-lg-block">
                         <form action="{{ route('welcome') }}" method="GET">
                             <input type="text" name="search" placeholder="Pesquisar carro..." class="form-control">
                             <button type="submit" class="search-button">
@@ -75,10 +95,15 @@
                             </button>
                         </form>
                     </div>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
+                        <div class="search-box d-lg-none">
+                            <form action="{{ route('welcome') }}" method="GET">
+                                <input type="text" name="search" placeholder="Pesquisar carro..." class="form-control">
+                                <button type="submit" class="search-button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link p-3" href="/carros">Carros</a>
@@ -93,9 +118,10 @@
                                 <a class="nav-link p-3" href="/custos">Custos</a>
                             </li>
                         </ul>
+                        <a href="/login" class="btn btn-light mobile-login d-lg-none">Entrar/Registrar</a>
                     </div>
                 </div>
-                <a href="/login" class="btn btn-light">Entrar/Registrar</a>
+                <a href="/login" class="btn btn-light desktop-login">Entrar/Registrar</a>
             </div>
         </div>
                     </li>
